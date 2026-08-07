@@ -11,10 +11,14 @@ namespace ExamenOnlineGokken.Data
     {
         public static void Seed (ModelBuilder modelBuilder)
         {
-            //add Leagues HERE
-            //
-            // \M/
-            //
+            var leagues = new League[]
+            {
+                new League {Id=1,Name="Serie A"},
+                new League {Id=2,Name="Jupiler League"},
+                new League {Id=3,Name="UEFA Champions League"},
+                new League {Id=4,Name="UEFA Europa League"},
+            };
+
             var games = new Game[]
             {
                 //Serie A
@@ -63,6 +67,7 @@ namespace ExamenOnlineGokken.Data
                 new Bet{UserId=users[3].Id,GameId = games[2].Id },
             };
 
+            modelBuilder.Entity<League>().HasData(leagues);
             modelBuilder.Entity<Game>().HasData(games);
             modelBuilder.Entity<User>().HasData(users);
             modelBuilder.Entity<Bet>().HasData(bets);
