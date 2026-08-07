@@ -12,5 +12,8 @@ namespace ExamenOnlineGokken.Domain.Entities
         public string AwayTeam { get; set; }
         public DateTime DateOfGame { get; set; }
         public ICollection<Bet> Bets { get; set; }
+
+        public long LeagueId { get; set; }
+        public League League { get; set; }
     }
 }
