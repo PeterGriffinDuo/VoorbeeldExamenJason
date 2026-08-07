@@ -17,7 +17,7 @@ namespace ExamenOnlineGokken.Web.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.26")
+                .HasAnnotation("ProductVersion", "2.1.14-servicing-32113")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -40,7 +40,7 @@ namespace ExamenOnlineGokken.Web.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Bets");
+                    b.ToTable("Bets", (string)null);
 
                     b.HasData(
                         new
@@ -128,14 +128,9 @@ namespace ExamenOnlineGokken.Web.Migrations
                     b.Property<string>("Hometeam")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<long>("LeagueId")
-                        .HasColumnType("bigint");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("LeagueId");
-
-                    b.ToTable("Games");
+                    b.ToTable("Games", (string)null);
 
                     b.HasData(
                         new
@@ -143,147 +138,113 @@ namespace ExamenOnlineGokken.Web.Migrations
                             Id = 1L,
                             AwayTeam = "Cagliari",
                             DateOfGame = new DateTime(2020, 1, 20, 15, 30, 0, 0, DateTimeKind.Unspecified),
-                            Hometeam = "Juventus",
-                            LeagueId = 0L
+                            Hometeam = "Juventus"
                         },
                         new
                         {
                             Id = 2L,
                             AwayTeam = "Pescara",
                             DateOfGame = new DateTime(2020, 1, 21, 18, 30, 0, 0, DateTimeKind.Unspecified),
-                            Hometeam = "Inter",
-                            LeagueId = 0L
+                            Hometeam = "Inter"
                         },
                         new
                         {
                             Id = 3L,
                             AwayTeam = "Cagliari",
                             DateOfGame = new DateTime(2020, 1, 20, 15, 30, 0, 0, DateTimeKind.Unspecified),
-                            Hometeam = "Napoli",
-                            LeagueId = 0L
+                            Hometeam = "Napoli"
                         },
                         new
                         {
                             Id = 4L,
                             AwayTeam = "Bologna",
                             DateOfGame = new DateTime(2020, 1, 20, 20, 30, 0, 0, DateTimeKind.Unspecified),
-                            Hometeam = "Milan",
-                            LeagueId = 0L
+                            Hometeam = "Milan"
                         },
                         new
                         {
                             Id = 5L,
                             AwayTeam = "Cercle Brugge",
                             DateOfGame = new DateTime(2020, 1, 23, 13, 30, 0, 0, DateTimeKind.Unspecified),
-                            Hometeam = "Club Brugge",
-                            LeagueId = 0L
+                            Hometeam = "Club Brugge"
                         },
                         new
                         {
                             Id = 6L,
                             AwayTeam = "AA Gent",
                             DateOfGame = new DateTime(2020, 1, 23, 18, 30, 0, 0, DateTimeKind.Unspecified),
-                            Hometeam = "KRC Genk",
-                            LeagueId = 0L
+                            Hometeam = "KRC Genk"
                         },
                         new
                         {
                             Id = 7L,
                             AwayTeam = "FC Antwerp",
                             DateOfGame = new DateTime(2020, 1, 23, 20, 30, 0, 0, DateTimeKind.Unspecified),
-                            Hometeam = "Standard",
-                            LeagueId = 0L
+                            Hometeam = "Standard"
                         },
                         new
                         {
                             Id = 8L,
                             AwayTeam = "Cercle Brugge",
                             DateOfGame = new DateTime(2020, 1, 23, 13, 30, 0, 0, DateTimeKind.Unspecified),
-                            Hometeam = "Club Brugge",
-                            LeagueId = 0L
+                            Hometeam = "Club Brugge"
                         },
                         new
                         {
                             Id = 9L,
                             AwayTeam = "Liverpool",
                             DateOfGame = new DateTime(2020, 2, 18, 20, 30, 0, 0, DateTimeKind.Unspecified),
-                            Hometeam = "Atletico Madrid",
-                            LeagueId = 0L
+                            Hometeam = "Atletico Madrid"
                         },
                         new
                         {
                             Id = 10L,
                             AwayTeam = "Valencia",
                             DateOfGame = new DateTime(2020, 2, 19, 20, 30, 0, 0, DateTimeKind.Unspecified),
-                            Hometeam = "Atalanta",
-                            LeagueId = 0L
+                            Hometeam = "Atalanta"
                         },
                         new
                         {
                             Id = 11L,
                             AwayTeam = "Bayern",
                             DateOfGame = new DateTime(2020, 2, 19, 20, 30, 0, 0, DateTimeKind.Unspecified),
-                            Hometeam = "Chelsea",
-                            LeagueId = 0L
+                            Hometeam = "Chelsea"
                         },
                         new
                         {
                             Id = 12L,
                             AwayTeam = "Barcelona",
                             DateOfGame = new DateTime(2020, 2, 25, 21, 0, 0, 0, DateTimeKind.Unspecified),
-                            Hometeam = "Napoli",
-                            LeagueId = 0L
+                            Hometeam = "Napoli"
                         },
                         new
                         {
                             Id = 13L,
                             AwayTeam = "Inter Milan",
                             DateOfGame = new DateTime(2020, 2, 20, 20, 30, 0, 0, DateTimeKind.Unspecified),
-                            Hometeam = "Ludogorets",
-                            LeagueId = 0L
+                            Hometeam = "Ludogorets"
                         },
                         new
                         {
                             Id = 14L,
                             AwayTeam = "Man United",
                             DateOfGame = new DateTime(2020, 2, 20, 21, 30, 0, 0, DateTimeKind.Unspecified),
-                            Hometeam = "Club Brugge",
-                            LeagueId = 0L
+                            Hometeam = "Club Brugge"
                         },
                         new
                         {
                             Id = 15L,
                             AwayTeam = "AS Roma",
                             DateOfGame = new DateTime(2020, 2, 27, 20, 30, 0, 0, DateTimeKind.Unspecified),
-                            Hometeam = "AA Gent",
-                            LeagueId = 0L
+                            Hometeam = "AA Gent"
                         },
                         new
                         {
                             Id = 16L,
                             AwayTeam = "Arsenal",
                             DateOfGame = new DateTime(2020, 2, 21, 20, 30, 0, 0, DateTimeKind.Unspecified),
-                            Hometeam = "Olympiacos",
-                            LeagueId = 0L
+                            Hometeam = "Olympiacos"
                         });
-                });
-
-            modelBuilder.Entity("ExamenOnlineGokken.Domain.Entities.League", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar(200)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Leagues");
                 });
 
             modelBuilder.Entity("ExamenOnlineGokken.Domain.Entities.User", b =>
@@ -302,7 +263,7 @@ namespace ExamenOnlineGokken.Web.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
 
                     b.HasData(
                         new
@@ -342,14 +303,12 @@ namespace ExamenOnlineGokken.Web.Migrations
                     b.HasOne("ExamenOnlineGokken.Domain.Entities.Game", "Game")
                         .WithMany("Bets")
                         .HasForeignKey("GameId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("ExamenOnlineGokken.Domain.Entities.User", "User")
                         .WithMany("Bets")
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.Navigation("Game");
 
@@ -358,23 +317,7 @@ namespace ExamenOnlineGokken.Web.Migrations
 
             modelBuilder.Entity("ExamenOnlineGokken.Domain.Entities.Game", b =>
                 {
-                    b.HasOne("ExamenOnlineGokken.Domain.Entities.League", "League")
-                        .WithMany("Games")
-                        .HasForeignKey("LeagueId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("League");
-                });
-
-            modelBuilder.Entity("ExamenOnlineGokken.Domain.Entities.Game", b =>
-                {
                     b.Navigation("Bets");
-                });
-
-            modelBuilder.Entity("ExamenOnlineGokken.Domain.Entities.League", b =>
-                {
-                    b.Navigation("Games");
                 });
 
             modelBuilder.Entity("ExamenOnlineGokken.Domain.Entities.User", b =>
