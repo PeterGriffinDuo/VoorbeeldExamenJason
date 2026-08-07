@@ -13,6 +13,7 @@ namespace ExamenOnlineGokken.Data
         public DbSet<User> Users { get; set; }
         public DbSet<Game> Games { get; set; }
         public DbSet<Bet> Bets { get; set; }
+        public DbSet<League> Leagues { get; set; }
 
         public GambleDbContext(DbContextOptions<GambleDbContext> options):base(options){}
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -27,6 +28,11 @@ namespace ExamenOnlineGokken.Data
                 .HasMany(u => u.Bets)
                 .WithOne(b => b.User);
             modelBuilder.Entity<Bet>().Property(b => b.BetAmount).HasColumnType("Decimal");
+
+            modelBuilder.Entity<League>()
+                .HasMany(l => l.Games)
+                .WithOne(g => g.League)
+                .HasForeignKey(g => g.LeagueId);
 
             Seeder.Seed(modelBuilder);
         }
