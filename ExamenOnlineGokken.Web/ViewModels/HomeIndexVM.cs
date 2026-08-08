@@ -10,5 +10,6 @@ namespace ExamenOnlineGokken.ViewModels
     {
         public string Title { get; set; }
         public IEnumerable<Game> Games { get; set; }
+        public long? SelectedLeagueId { get; set; }
     }
 }
