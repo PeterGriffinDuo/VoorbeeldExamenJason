@@ -27,6 +27,11 @@ app.UseRouting();
 
 
 app.MapControllerRoute(
+    name: "ByLeagueRoute",
+    pattern: "ByLeague/{id}",
+    defaults: new { Controller = "Home", Action = "FindByLeague" });
+
+app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
