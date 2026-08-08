@@ -36,11 +36,7 @@
         <div class="row mt-5">
             <aside class="col-4">
                 <h3>Leagues</h3>
-                <div class="list-group">
-                    <a class="list-group-item list-group-item-action " href="/ByLeague/0">Leagues</a>
-                    <a class="list-group-item list-group-item-action " href="/ByLeague/0">Go here</a>
-                    <a class="list-group-item list-group-item-action " href="/ByLeague/0">...</a>
-                </div>
+                @await Component.InvokeAsync("LeagueList")
             </aside>
             <main class="col-8">
                 @RenderBody()

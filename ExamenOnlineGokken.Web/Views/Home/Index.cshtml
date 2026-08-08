@@ -1,5 +1,4 @@
 ﻿@model HomeIndexVM
 
 <h4>@Model.Title</h4>
-@await Component.InvokeAsync("LeagueList")
 <partial name="_GameListPartial" model="Model.Games" />

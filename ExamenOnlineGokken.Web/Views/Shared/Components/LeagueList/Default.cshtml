@@ -1,10 +1,8 @@
 @model IEnumerable<League>
 
-<ul class="list-group mb-4">
+<div class="list-group">
     @foreach (var league in Model)
     {
-        <li class="list-group-item">
-            <a asp-route="ByLeagueRoute" asp-route-id="@league.Id">@league.Name</a>
-        </li>
+        <a class="list-group-item list-group-item-action" asp-route="ByLeagueRoute" asp-route-id="@league.Id">@league.Name</a>
     }
-</ul>
+</div>
