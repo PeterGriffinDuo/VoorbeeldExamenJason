@@ -1,27 +1,4 @@
 ﻿@model HomeIndexVM
 
 <h4>@Model.Title</h4>
-<table class="table mt-5" id="games-table">
-    <thead class="thead-light">
-        <tr>
-            <th scope="col">Home</th>
-            <th scope="col">Away</th>
-            <th scope="col">Date</th>
-            <th scope="col">N° of Bets</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var game in Model.Games)
-        {
-            <tr>
-                <td>@game.AwayTeam</td>
-                <td>@game.Hometeam</td>
-                <td>@game.DateOfGame</td>
-            <td><span class="badge bg-info text-white">@game.Bets.Count.ToString()</span></td>
-        </tr>
-    }
-    </tbody>
-    <tfoot>
-    <th colspan="3"></th>
-    </tfoot>
-</table>
+<partial name="_GameListPartial" model="Model.Games" />
