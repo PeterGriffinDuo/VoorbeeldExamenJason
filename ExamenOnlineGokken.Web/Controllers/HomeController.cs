@@ -29,6 +29,25 @@ namespace ExamenOnlineGokken.Controllers
             return View(homeIndexVM);
         }
 
+        public async Task<IActionResult> FindByLeague(long? id)
+        {
+            HomeIndexVM homeIndexVM = new HomeIndexVM();
+            homeIndexVM.Title = "Games by league";
+            homeIndexVM.SelectedLeagueId = id;
+
+            if (id.HasValue)
+            {
+                homeIndexVM.Games = await _gambleDbContext.Games
+                    .Where(g => g.LeagueId == id)
+                    .Include(g => g.Bets)
+                    .ThenInclude(b => b.User)
+                    .OrderBy(g => g.DateOfGame)
+                    .ToListAsync();
+            }
+
+            return View(homeIndexVM);
+        }
+
        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
