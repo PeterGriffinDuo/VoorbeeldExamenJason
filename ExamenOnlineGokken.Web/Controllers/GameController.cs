@@ -1,4 +1,5 @@
 using ExamenOnlineGokken.Data;
+using ExamenOnlineGokken.Domain.Entities;
 using ExamenOnlineGokken.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -29,6 +30,30 @@ namespace ExamenOnlineGokken.Controllers
             CreateGameViewModel createGameViewModel = new CreateGameViewModel();
             createGameViewModel.Leagues = await GetLeagueSelectListAsync();
             return View(createGameViewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(CreateGameViewModel createGameViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                createGameViewModel.Leagues = await GetLeagueSelectListAsync(createGameViewModel.SelectedLeagueId);
+                return View(createGameViewModel);
+            }
+
+            var game = new Game
+            {
+                Hometeam = createGameViewModel.HomeTeam,
+                AwayTeam = createGameViewModel.AwayTeam,
+                DateOfGame = createGameViewModel.DateOfGame,
+                LeagueId = createGameViewModel.SelectedLeagueId
+            };
+
+            _gambleDbContext.Games.Add(game);
+            await _gambleDbContext.SaveChangesAsync();
+
+            return RedirectToAction("Index", "Home");
         }
 
         private async Task<List<SelectListItem>> GetLeagueSelectListAsync(long? selectedLeagueId = null)
