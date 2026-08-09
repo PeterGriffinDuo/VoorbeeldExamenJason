@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using ExamenOnlineGokken.Models;
 using ExamenOnlineGokken.Data;
 using ExamenOnlineGokken.ViewModels;
@@ -49,9 +50,30 @@ namespace ExamenOnlineGokken.Controllers
         }
 
         [HttpGet]
-        public IActionResult Search()
+        public async Task<IActionResult> Search()
         {
-            return View(new SearchGameViewModel());
+            SearchGameViewModel searchGameViewModel = new SearchGameViewModel();
+            searchGameViewModel.Leagues = await GetLeagueSelectListAsync();
+            return View(searchGameViewModel);
+        }
+
+        private async Task<List<SelectListItem>> GetLeagueSelectListAsync(long? selectedLeagueId = null)
+        {
+            var leagues = await _gambleDbContext.Leagues
+                .OrderBy(l => l.Name)
+                .ToListAsync();
+
+            var items = leagues
+                .Select(l => new SelectListItem
+                {
+                    Value = l.Id.ToString(),
+                    Text = l.Name,
+                    Selected = selectedLeagueId.HasValue && l.Id == selectedLeagueId
+                })
+                .ToList();
+
+            items.Insert(0, new SelectListItem { Value = "", Text = "-- Alle leagues --" });
+            return items;
         }
 
        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
