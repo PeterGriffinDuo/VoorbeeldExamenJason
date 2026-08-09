@@ -57,6 +57,14 @@ namespace ExamenOnlineGokken.Controllers
             return View(searchGameViewModel);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Search(SearchGameViewModel searchGameViewModel)
+        {
+            searchGameViewModel.Leagues = await GetLeagueSelectListAsync(searchGameViewModel.SelectedLeagueId);
+            return View(searchGameViewModel);
+        }
+
         private async Task<List<SelectListItem>> GetLeagueSelectListAsync(long? selectedLeagueId = null)
         {
             var leagues = await _gambleDbContext.Leagues
