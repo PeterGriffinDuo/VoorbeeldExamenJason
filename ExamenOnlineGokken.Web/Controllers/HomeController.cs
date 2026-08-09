@@ -48,6 +48,12 @@ namespace ExamenOnlineGokken.Controllers
             return View(homeIndexVM);
         }
 
+        [HttpGet]
+        public IActionResult Search()
+        {
+            return View(new SearchGameViewModel());
+        }
+
        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
