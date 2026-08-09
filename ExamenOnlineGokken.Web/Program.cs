@@ -6,6 +6,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<GambleDbContext>
 (options => options.UseSqlServer(builder.Configuration.GetConnectionString("GambleDb")));
 
+builder.Services.AddSession(options =>
+{
+    options.Cookie.SameSite = SameSiteMode.Strict;
+    options.Cookie.HttpOnly = true;
+    options.IdleTimeout = TimeSpan.FromMinutes(20);
+});
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -24,7 +31,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-
+app.UseSession();
 
 app.MapControllerRoute(
     name: "ByLeagueRoute",
