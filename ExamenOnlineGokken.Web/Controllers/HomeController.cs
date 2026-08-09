@@ -62,6 +62,34 @@ namespace ExamenOnlineGokken.Controllers
         public async Task<IActionResult> Search(SearchGameViewModel searchGameViewModel)
         {
             searchGameViewModel.Leagues = await GetLeagueSelectListAsync(searchGameViewModel.SelectedLeagueId);
+
+            if (ModelState.IsValid)
+            {
+                var query = _gambleDbContext.Games
+                    .Include(g => g.Bets)
+                    .ThenInclude(b => b.User)
+                    .AsQueryable();
+
+                if (!string.IsNullOrWhiteSpace(searchGameViewModel.HomeTeam))
+                {
+                    query = query.Where(g => g.Hometeam.Contains(searchGameViewModel.HomeTeam));
+                }
+
+                if (!string.IsNullOrWhiteSpace(searchGameViewModel.AwayTeam))
+                {
+                    query = query.Where(g => g.AwayTeam.Contains(searchGameViewModel.AwayTeam));
+                }
+
+                if (searchGameViewModel.SelectedLeagueId.HasValue)
+                {
+                    query = query.Where(g => g.LeagueId == searchGameViewModel.SelectedLeagueId);
+                }
+
+                searchGameViewModel.Games = await query
+                    .OrderBy(g => g.DateOfGame)
+                    .ToListAsync();
+            }
+
             return View(searchGameViewModel);
         }
 

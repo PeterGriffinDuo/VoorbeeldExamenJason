@@ -17,3 +17,8 @@
     </div>
     <button type="submit" class="btn btn-primary mt-2">Search</button>
 </form>
+
+@if (Model.Games != null)
+{
+    <partial name="_GameListPartial" model="Model.Games" />
+}
