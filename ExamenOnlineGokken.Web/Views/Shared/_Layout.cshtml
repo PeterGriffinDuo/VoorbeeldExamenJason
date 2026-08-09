@@ -27,8 +27,14 @@
                     <a class="nav-link " asp-controller="Game" asp-action="Create">Add Game</a>
                 </li>
                 <li class="nav-item">
+                    @{
+                        var bettingCart = Context.Session.GetString("BettingCart");
+                        var betCount = bettingCart == null
+                            ? 0
+                            : Newtonsoft.Json.JsonConvert.DeserializeObject<List<long>>(bettingCart).Count;
+                    }
                     <a asp-controller="Bet" asp-action="ShowBets" class="btn btn-info btn-sm">
-                        <span class="fas fa-shopping-cart"></span> Your Bets: @(Context.Session.GetInt32("BetCount") ?? 0)
+                        <span class="fas fa-shopping-cart"></span> Your Bets: @betCount
                     </a>
                 </li>
             </ul>
