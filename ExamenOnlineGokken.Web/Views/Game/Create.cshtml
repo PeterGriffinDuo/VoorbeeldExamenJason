@@ -1,0 +1,25 @@
+@model CreateGameViewModel
+
+<h4>Add Game</h4>
+
+<form asp-controller="Game" asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="HomeTeam"></label>
+        <input asp-for="HomeTeam" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="AwayTeam"></label>
+        <input asp-for="AwayTeam" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="DateOfGame"></label>
+        <input asp-for="DateOfGame" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="SelectedLeagueId"></label>
+        <select asp-for="SelectedLeagueId" asp-items="Model.Leagues" class="form-control">
+            <option value="">-- Kies een League --</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary mt-2">Add Game</button>
+</form>
